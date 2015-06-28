@@ -1,0 +1,17 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+  <head>
+    <title>PKCS#11 ModuleInfo Demo Applet</title>
+  </head>
+
+  <body>
+
+    <!-- please note that the wrapper installer is referenced in the manifest of the demo JAR -->
+    <applet code="demo.pkcs.pkcs11.ModuleInfo" archive="lib/moduleInfoDemo.jar">
+    <!-- provide the shared library name of your PKCS#11 library with the ModuleName parameter -->
+    <param name="ModuleName" value="aetpkss1.dll">
+      Your browser doesn't understand Java.
+    </applet>
+
+  </body>
+</html>

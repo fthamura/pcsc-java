@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- this is a build script for Apache ANT -->
+
+<project name="iaikPkcs11WrapperAppletDemo" default="help" basedir=".">
+
+<!-- displays the help screen -->
+  <target name="help">
+    <echo>
+      available targets:
+       - help     : displays this help
+       - compile  : compiles all classes
+       - buildjar : builds all classes and generates a jar file
+    </echo>
+  </target>
+
+<!-- setting global properties -->
+  <target name="init" description="Sets variables shared between several targets.">
+    <property name="src" value="src"/>
+    <property name="classes" value="classes"/>
+    <property name="lib" value="lib"/>
+    <property name="wrapper" value="../java/lib/iaikPkcs11Wrapper.jar"/>
+    <property name="jar" value="${lib}/moduleInfoDemo.jar"/>
+
+    <property name="jarsigning-keystore" value="test/alice.jks"/>
+    <property name="jarsigning-password" value="password"/>
+    <property name="jarsigning-alias" value="alice"/>
+
+    <path id="base.path">
+      <pathelement location="${wrapper}"/>
+    </path>
+  </target>
+  
+<!-- cleaning  -->
+  <target name="clean" depends="init" description="Removes classes and JARs.">
+    <delete>
+      <fileset dir="${classes}" includes="demo/**/*"/>
+    </delete>
+    <delete file="${jar}"/>
+  </target>
+
+<!-- compiles the project classes -->
+  <target name="compile" depends="init" description="Compiles the project Java files.">
+    <mkdir dir="${classes}"/> 
+    <javac destdir="${classes}" 
+           failonerror="false" 
+           verbose="false" 
+           debug="on" 
+           includeAntRuntime="no">
+      <src path="${src}"/>
+      <classpath refid="base.path"/>
+    </javac>
+  </target>
+
+<!-- compiling all classes and pack it into jars -->
+  <target name="jar" depends="init,compile" description="Builds the project jar file.">
+    <jar jarfile="${jar}" basedir="${classes}" manifest="lib/demo.MF"> 
+      <include name="demo/**/*.class"/>
+    </jar>
+    <signjar jar="${jar}" keystore="${jarsigning-keystore}" 
+             storepass="${jarsigning-password}" alias="${jarsigning-alias}"/>
+  </target>
+
+<!-- build all -->
+  <target name="all" depends="init,compile,jar" description="Builds all."/>
+  
+</project>
+

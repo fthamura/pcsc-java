@@ -1,0 +1,638 @@
+<HTML>
+<BODY BGCOLOR="white">
+<PRE>
+<FONT color="green">001</FONT>    /* Copyright  (c) 2002 Graz University of Technology. All rights reserved.<a name="line.1"></a>
+<FONT color="green">002</FONT>     *<a name="line.2"></a>
+<FONT color="green">003</FONT>     * Redistribution and use in  source and binary forms, with or without <a name="line.3"></a>
+<FONT color="green">004</FONT>     * modification, are permitted  provided that the following conditions are met:<a name="line.4"></a>
+<FONT color="green">005</FONT>     *<a name="line.5"></a>
+<FONT color="green">006</FONT>     * 1. Redistributions of  source code must retain the above copyright notice,<a name="line.6"></a>
+<FONT color="green">007</FONT>     *    this list of conditions and the following disclaimer.<a name="line.7"></a>
+<FONT color="green">008</FONT>     *<a name="line.8"></a>
+<FONT color="green">009</FONT>     * 2. Redistributions in  binary form must reproduce the above copyright notice,<a name="line.9"></a>
+<FONT color="green">010</FONT>     *    this list of conditions and the following disclaimer in the documentation<a name="line.10"></a>
+<FONT color="green">011</FONT>     *    and/or other materials provided with the distribution.<a name="line.11"></a>
+<FONT color="green">012</FONT>     *  <a name="line.12"></a>
+<FONT color="green">013</FONT>     * 3. The end-user documentation included with the redistribution, if any, must<a name="line.13"></a>
+<FONT color="green">014</FONT>     *    include the following acknowledgment:<a name="line.14"></a>
+<FONT color="green">015</FONT>     * <a name="line.15"></a>
+<FONT color="green">016</FONT>     *    "This product includes software developed by IAIK of Graz University of<a name="line.16"></a>
+<FONT color="green">017</FONT>     *     Technology."<a name="line.17"></a>
+<FONT color="green">018</FONT>     * <a name="line.18"></a>
+<FONT color="green">019</FONT>     *    Alternately, this acknowledgment may appear in the software itself, if <a name="line.19"></a>
+<FONT color="green">020</FONT>     *    and wherever such third-party acknowledgments normally appear.<a name="line.20"></a>
+<FONT color="green">021</FONT>     *  <a name="line.21"></a>
+<FONT color="green">022</FONT>     * 4. The names "Graz University of Technology" and "IAIK of Graz University of<a name="line.22"></a>
+<FONT color="green">023</FONT>     *    Technology" must not be used to endorse or promote products derived from <a name="line.23"></a>
+<FONT color="green">024</FONT>     *    this software without prior written permission.<a name="line.24"></a>
+<FONT color="green">025</FONT>     *  <a name="line.25"></a>
+<FONT color="green">026</FONT>     * 5. Products derived from this software may not be called <a name="line.26"></a>
+<FONT color="green">027</FONT>     *    "IAIK PKCS Wrapper", nor may "IAIK" appear in their name, without prior <a name="line.27"></a>
+<FONT color="green">028</FONT>     *    written permission of Graz University of Technology.<a name="line.28"></a>
+<FONT color="green">029</FONT>     *  <a name="line.29"></a>
+<FONT color="green">030</FONT>     *  THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED<a name="line.30"></a>
+<FONT color="green">031</FONT>     *  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED<a name="line.31"></a>
+<FONT color="green">032</FONT>     *  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR<a name="line.32"></a>
+<FONT color="green">033</FONT>     *  PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE LICENSOR BE<a name="line.33"></a>
+<FONT color="green">034</FONT>     *  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,<a name="line.34"></a>
+<FONT color="green">035</FONT>     *  OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,<a name="line.35"></a>
+<FONT color="green">036</FONT>     *  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,<a name="line.36"></a>
+<FONT color="green">037</FONT>     *  OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON<a name="line.37"></a>
+<FONT color="green">038</FONT>     *  ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,<a name="line.38"></a>
+<FONT color="green">039</FONT>     *  OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY<a name="line.39"></a>
+<FONT color="green">040</FONT>     *  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE<a name="line.40"></a>
+<FONT color="green">041</FONT>     *  POSSIBILITY  OF SUCH DAMAGE.<a name="line.41"></a>
+<FONT color="green">042</FONT>     */<a name="line.42"></a>
+<FONT color="green">043</FONT>    <a name="line.43"></a>
+<FONT color="green">044</FONT>    package demo.pkcs.pkcs11;<a name="line.44"></a>
+<FONT color="green">045</FONT>    <a name="line.45"></a>
+<FONT color="green">046</FONT>    import java.io.BufferedReader;<a name="line.46"></a>
+<FONT color="green">047</FONT>    import java.io.IOException;<a name="line.47"></a>
+<FONT color="green">048</FONT>    import java.io.PrintWriter;<a name="line.48"></a>
+<FONT color="green">049</FONT>    //import java.util.HashMap;<a name="line.49"></a>
+<FONT color="green">050</FONT>    import java.util.Enumeration;<a name="line.50"></a>
+<FONT color="green">051</FONT>    import java.util.Hashtable;<a name="line.51"></a>
+<FONT color="green">052</FONT>    //import java.util.Iterator;<a name="line.52"></a>
+<FONT color="green">053</FONT>    //import java.util.List;<a name="line.53"></a>
+<FONT color="green">054</FONT>    //import java.util.Map;<a name="line.54"></a>
+<FONT color="green">055</FONT>    import java.util.Vector;<a name="line.55"></a>
+<FONT color="green">056</FONT>    <a name="line.56"></a>
+<FONT color="green">057</FONT>    import iaik.pkcs.pkcs11.Module;<a name="line.57"></a>
+<FONT color="green">058</FONT>    import iaik.pkcs.pkcs11.Session;<a name="line.58"></a>
+<FONT color="green">059</FONT>    import iaik.pkcs.pkcs11.Slot;<a name="line.59"></a>
+<FONT color="green">060</FONT>    import iaik.pkcs.pkcs11.Token;<a name="line.60"></a>
+<FONT color="green">061</FONT>    import iaik.pkcs.pkcs11.TokenException;<a name="line.61"></a>
+<FONT color="green">062</FONT>    import iaik.pkcs.pkcs11.TokenInfo;<a name="line.62"></a>
+<FONT color="green">063</FONT>    import iaik.pkcs.pkcs11.objects.Key;<a name="line.63"></a>
+<FONT color="green">064</FONT>    import iaik.pkcs.pkcs11.objects.Object;<a name="line.64"></a>
+<FONT color="green">065</FONT>    import iaik.pkcs.pkcs11.objects.PrivateKey;<a name="line.65"></a>
+<FONT color="green">066</FONT>    import iaik.pkcs.pkcs11.objects.RSAPrivateKey;<a name="line.66"></a>
+<FONT color="green">067</FONT>    import iaik.pkcs.pkcs11.objects.X509PublicKeyCertificate;<a name="line.67"></a>
+<FONT color="green">068</FONT>    import iaik.x509.X509Certificate;<a name="line.68"></a>
+<FONT color="green">069</FONT>    <a name="line.69"></a>
+<FONT color="green">070</FONT>    <a name="line.70"></a>
+<FONT color="green">071</FONT>    <a name="line.71"></a>
+<FONT color="green">072</FONT>    /**<a name="line.72"></a>
+<FONT color="green">073</FONT>     * This class contains only static methods. It is the place for all functions<a name="line.73"></a>
+<FONT color="green">074</FONT>     * that are used by several classes in this package.<a name="line.74"></a>
+<FONT color="green">075</FONT>     *<a name="line.75"></a>
+<FONT color="green">076</FONT>     * @author Karl Scheibelhofer &lt;Karl.Scheibelhofer@iaik.at><a name="line.76"></a>
+<FONT color="green">077</FONT>     */<a name="line.77"></a>
+<FONT color="green">078</FONT>    public class Util {<a name="line.78"></a>
+<FONT color="green">079</FONT>    <a name="line.79"></a>
+<FONT color="green">080</FONT>      /**<a name="line.80"></a>
+<FONT color="green">081</FONT>       * Maps mechanism strings to their codes as Long.<a name="line.81"></a>
+<FONT color="green">082</FONT>       */<a name="line.82"></a>
+<FONT color="green">083</FONT>      protected static Hashtable mechansimCodes_;<a name="line.83"></a>
+<FONT color="green">084</FONT>    <a name="line.84"></a>
+<FONT color="green">085</FONT>      /**<a name="line.85"></a>
+<FONT color="green">086</FONT>       * Converts the names of mechanisms to their long value code.<a name="line.86"></a>
+<FONT color="green">087</FONT>       *<a name="line.87"></a>
+<FONT color="green">088</FONT>       * @param mechansimName The name of the mechanism to get the code; e.g.<a name="line.88"></a>
+<FONT color="green">089</FONT>       *                      "CKM_RSA_PKCS".<a name="line.89"></a>
+<FONT color="green">090</FONT>       * @return The code of the mechanism or null, if this name is unknown.<a name="line.90"></a>
+<FONT color="green">091</FONT>       * @preconditions (mechansimName &lt;> null)<a name="line.91"></a>
+<FONT color="green">092</FONT>       * @postconditions<a name="line.92"></a>
+<FONT color="green">093</FONT>       */<a name="line.93"></a>
+<FONT color="green">094</FONT>      public static Long mechanismCodeToString(String mechansimName) {<a name="line.94"></a>
+<FONT color="green">095</FONT>        if (mechansimName == null) {<a name="line.95"></a>
+<FONT color="green">096</FONT>          throw new NullPointerException("Argument \"mechansimName\" must not be null.");<a name="line.96"></a>
+<FONT color="green">097</FONT>        }<a name="line.97"></a>
+<FONT color="green">098</FONT>    <a name="line.98"></a>
+<FONT color="green">099</FONT>        Long mechanismCode;<a name="line.99"></a>
+<FONT color="green">100</FONT>    <a name="line.100"></a>
+<FONT color="green">101</FONT>        if (mechansimName.startsWith("0x")) {<a name="line.101"></a>
+<FONT color="green">102</FONT>          // we try to parse it as hex encoded long<a name="line.102"></a>
+<FONT color="green">103</FONT>          mechanismCode = new Long(Long.parseLong(mechansimName, 16));<a name="line.103"></a>
+<FONT color="green">104</FONT>        } else {<a name="line.104"></a>
+<FONT color="green">105</FONT>          if (mechansimCodes_ == null) {<a name="line.105"></a>
+<FONT color="green">106</FONT>            mechansimCodes_ = new Hashtable(160);<a name="line.106"></a>
+<FONT color="green">107</FONT>            mechansimCodes_.put("CKM_RSA_PKCS_KEY_PAIR_GEN", new Long(0x00000000));<a name="line.107"></a>
+<FONT color="green">108</FONT>            mechansimCodes_.put("CKM_RSA_PKCS", new Long(0x00000001));<a name="line.108"></a>
+<FONT color="green">109</FONT>            mechansimCodes_.put("CKM_RSA_9796", new Long(0x00000002));<a name="line.109"></a>
+<FONT color="green">110</FONT>            mechansimCodes_.put("CKM_RSA_X_509", new Long(0x00000003));<a name="line.110"></a>
+<FONT color="green">111</FONT>            mechansimCodes_.put("CKM_MD2_RSA_PKCS", new Long(0x00000004));<a name="line.111"></a>
+<FONT color="green">112</FONT>            mechansimCodes_.put("CKM_MD5_RSA_PKCS", new Long(0x00000005));<a name="line.112"></a>
+<FONT color="green">113</FONT>            mechansimCodes_.put("CKM_SHA1_RSA_PKCS", new Long(0x00000006));<a name="line.113"></a>
+<FONT color="green">114</FONT>            mechansimCodes_.put("CKM_RIPEMD128_RSA_PKCS", new Long(0x00000007));<a name="line.114"></a>
+<FONT color="green">115</FONT>            mechansimCodes_.put("CKM_RIPEMD160_RSA_PKCS", new Long(0x00000008));<a name="line.115"></a>
+<FONT color="green">116</FONT>            mechansimCodes_.put("CKM_RSA_PKCS_OAEP", new Long(0x00000009));<a name="line.116"></a>
+<FONT color="green">117</FONT>            mechansimCodes_.put("CKM_DSA_KEY_PAIR_GEN", new Long(0x00000010));<a name="line.117"></a>
+<FONT color="green">118</FONT>            mechansimCodes_.put("CKM_DSA", new Long(0x00000011));<a name="line.118"></a>
+<FONT color="green">119</FONT>            mechansimCodes_.put("CKM_DSA_SHA1", new Long(0x00000012));<a name="line.119"></a>
+<FONT color="green">120</FONT>            mechansimCodes_.put("CKM_DH_PKCS_KEY_PAIR_GEN", new Long(0x00000020));<a name="line.120"></a>
+<FONT color="green">121</FONT>            mechansimCodes_.put("CKM_DH_PKCS_DERIVE", new Long(0x00000021));<a name="line.121"></a>
+<FONT color="green">122</FONT>            mechansimCodes_.put("CKM_RC2_KEY_GEN", new Long(0x00000100));<a name="line.122"></a>
+<FONT color="green">123</FONT>            mechansimCodes_.put("CKM_RC2_ECB", new Long(0x00000101));<a name="line.123"></a>
+<FONT color="green">124</FONT>            mechansimCodes_.put("CKM_RC2_CBC", new Long(0x00000102));<a name="line.124"></a>
+<FONT color="green">125</FONT>            mechansimCodes_.put("CKM_RC2_MAC", new Long(0x00000103));<a name="line.125"></a>
+<FONT color="green">126</FONT>            mechansimCodes_.put("CKM_RC2_MAC_GENERAL", new Long(0x00000104));<a name="line.126"></a>
+<FONT color="green">127</FONT>            mechansimCodes_.put("CKM_RC2_CBC_PAD", new Long(0x00000105));<a name="line.127"></a>
+<FONT color="green">128</FONT>            mechansimCodes_.put("CKM_RC4_KEY_GEN", new Long(0x00000110));<a name="line.128"></a>
+<FONT color="green">129</FONT>            mechansimCodes_.put("CKM_RC4", new Long(0x00000111));<a name="line.129"></a>
+<FONT color="green">130</FONT>            mechansimCodes_.put("CKM_DES_KEY_GEN", new Long(0x00000120));<a name="line.130"></a>
+<FONT color="green">131</FONT>            mechansimCodes_.put("CKM_DES_ECB", new Long(0x00000121));<a name="line.131"></a>
+<FONT color="green">132</FONT>            mechansimCodes_.put("CKM_DES_CBC", new Long(0x00000122));<a name="line.132"></a>
+<FONT color="green">133</FONT>            mechansimCodes_.put("CKM_DES_MAC", new Long(0x00000123));<a name="line.133"></a>
+<FONT color="green">134</FONT>            mechansimCodes_.put("CKM_DES_MAC_GENERAL", new Long(0x00000124));<a name="line.134"></a>
+<FONT color="green">135</FONT>            mechansimCodes_.put("CKM_DES_CBC_PAD", new Long(0x00000125));<a name="line.135"></a>
+<FONT color="green">136</FONT>            mechansimCodes_.put("CKM_DES2_KEY_GEN", new Long(0x00000130));<a name="line.136"></a>
+<FONT color="green">137</FONT>            mechansimCodes_.put("CKM_DES3_KEY_GEN", new Long(0x00000131));<a name="line.137"></a>
+<FONT color="green">138</FONT>            mechansimCodes_.put("CKM_DES3_ECB", new Long(0x00000132));<a name="line.138"></a>
+<FONT color="green">139</FONT>            mechansimCodes_.put("CKM_DES3_CBC", new Long(0x00000133));<a name="line.139"></a>
+<FONT color="green">140</FONT>            mechansimCodes_.put("CKM_DES3_MAC", new Long(0x00000134));<a name="line.140"></a>
+<FONT color="green">141</FONT>            mechansimCodes_.put("CKM_DES3_MAC_GENERAL", new Long(0x00000135));<a name="line.141"></a>
+<FONT color="green">142</FONT>            mechansimCodes_.put("CKM_DES3_CBC_PAD", new Long(0x00000136));<a name="line.142"></a>
+<FONT color="green">143</FONT>            mechansimCodes_.put("CKM_CDMF_KEY_GEN", new Long(0x00000140));<a name="line.143"></a>
+<FONT color="green">144</FONT>            mechansimCodes_.put("CKM_CDMF_ECB", new Long(0x00000141));<a name="line.144"></a>
+<FONT color="green">145</FONT>            mechansimCodes_.put("CKM_CDMF_CBC", new Long(0x00000142));<a name="line.145"></a>
+<FONT color="green">146</FONT>            mechansimCodes_.put("CKM_CDMF_MAC", new Long(0x00000143));<a name="line.146"></a>
+<FONT color="green">147</FONT>            mechansimCodes_.put("CKM_CDMF_MAC_GENERAL", new Long(0x00000144));<a name="line.147"></a>
+<FONT color="green">148</FONT>            mechansimCodes_.put("CKM_CDMF_CBC_PAD", new Long(0x00000145));<a name="line.148"></a>
+<FONT color="green">149</FONT>            mechansimCodes_.put("CKM_MD2", new Long(0x00000200));<a name="line.149"></a>
+<FONT color="green">150</FONT>            mechansimCodes_.put("CKM_MD2_HMAC", new Long(0x00000201));<a name="line.150"></a>
+<FONT color="green">151</FONT>            mechansimCodes_.put("CKM_MD2_HMAC_GENERAL", new Long(0x00000202));<a name="line.151"></a>
+<FONT color="green">152</FONT>            mechansimCodes_.put("CKM_MD5", new Long(0x00000210));<a name="line.152"></a>
+<FONT color="green">153</FONT>            mechansimCodes_.put("CKM_MD5_HMAC", new Long(0x00000211));<a name="line.153"></a>
+<FONT color="green">154</FONT>            mechansimCodes_.put("CKM_MD5_HMAC_GENERAL", new Long(0x00000212));<a name="line.154"></a>
+<FONT color="green">155</FONT>            mechansimCodes_.put("CKM_SHA_1", new Long(0x00000220));<a name="line.155"></a>
+<FONT color="green">156</FONT>            mechansimCodes_.put("CKM_SHA_1_HMAC", new Long(0x00000221));<a name="line.156"></a>
+<FONT color="green">157</FONT>            mechansimCodes_.put("CKM_SHA_1_HMAC_GENERAL", new Long(0x00000222));<a name="line.157"></a>
+<FONT color="green">158</FONT>            mechansimCodes_.put("CKM_RIPEMD128", new Long(0x00000230));<a name="line.158"></a>
+<FONT color="green">159</FONT>            mechansimCodes_.put("CKM_RIPEMD128_HMAC", new Long(0x00000231));<a name="line.159"></a>
+<FONT color="green">160</FONT>            mechansimCodes_.put("CKM_RIPEMD128_HMAC_GENERAL", new Long(0x00000232));<a name="line.160"></a>
+<FONT color="green">161</FONT>            mechansimCodes_.put("CKM_RIPEMD160", new Long(0x00000240));<a name="line.161"></a>
+<FONT color="green">162</FONT>            mechansimCodes_.put("CKM_RIPEMD160_HMAC", new Long(0x00000241));<a name="line.162"></a>
+<FONT color="green">163</FONT>            mechansimCodes_.put("CKM_RIPEMD160_HMAC_GENERAL", new Long(0x00000242));<a name="line.163"></a>
+<FONT color="green">164</FONT>            mechansimCodes_.put("CKM_CAST_KEY_GEN", new Long(0x00000300));<a name="line.164"></a>
+<FONT color="green">165</FONT>            mechansimCodes_.put("CKM_CAST_ECB", new Long(0x00000301));<a name="line.165"></a>
+<FONT color="green">166</FONT>            mechansimCodes_.put("CKM_CAST_CBC", new Long(0x00000302));<a name="line.166"></a>
+<FONT color="green">167</FONT>            mechansimCodes_.put("CKM_CAST_MAC", new Long(0x00000303));<a name="line.167"></a>
+<FONT color="green">168</FONT>            mechansimCodes_.put("CKM_CAST_MAC_GENERAL", new Long(0x00000304));<a name="line.168"></a>
+<FONT color="green">169</FONT>            mechansimCodes_.put("CKM_CAST_CBC_PAD", new Long(0x00000305));<a name="line.169"></a>
+<FONT color="green">170</FONT>            mechansimCodes_.put("CKM_CAST3_KEY_GEN", new Long(0x00000310));<a name="line.170"></a>
+<FONT color="green">171</FONT>            mechansimCodes_.put("CKM_CAST3_ECB", new Long(0x00000311));<a name="line.171"></a>
+<FONT color="green">172</FONT>            mechansimCodes_.put("CKM_CAST3_CBC", new Long(0x00000312));<a name="line.172"></a>
+<FONT color="green">173</FONT>            mechansimCodes_.put("CKM_CAST3_MAC", new Long(0x00000313));<a name="line.173"></a>
+<FONT color="green">174</FONT>            mechansimCodes_.put("CKM_CAST3_MAC_GENERAL", new Long(0x00000314));<a name="line.174"></a>
+<FONT color="green">175</FONT>            mechansimCodes_.put("CKM_CAST3_CBC_PAD", new Long(0x00000315));<a name="line.175"></a>
+<FONT color="green">176</FONT>            mechansimCodes_.put("CKM_CAST5_KEY_GEN", new Long(0x00000320));<a name="line.176"></a>
+<FONT color="green">177</FONT>            mechansimCodes_.put("CKM_CAST128_KEY_GEN", new Long(0x00000320));<a name="line.177"></a>
+<FONT color="green">178</FONT>            mechansimCodes_.put("CKM_CAST5_ECB", new Long(0x00000321));<a name="line.178"></a>
+<FONT color="green">179</FONT>            mechansimCodes_.put("CKM_CAST128_ECB", new Long(0x00000321));<a name="line.179"></a>
+<FONT color="green">180</FONT>            mechansimCodes_.put("CKM_CAST5_CBC", new Long(0x00000322));<a name="line.180"></a>
+<FONT color="green">181</FONT>            mechansimCodes_.put("CKM_CAST128_CBC", new Long(0x00000322));<a name="line.181"></a>
+<FONT color="green">182</FONT>            mechansimCodes_.put("CKM_CAST5_MAC", new Long(0x00000323));<a name="line.182"></a>
+<FONT color="green">183</FONT>            mechansimCodes_.put("CKM_CAST128_MAC", new Long(0x00000323));<a name="line.183"></a>
+<FONT color="green">184</FONT>            mechansimCodes_.put("CKM_CAST5_MAC_GENERAL", new Long(0x00000324));<a name="line.184"></a>
+<FONT color="green">185</FONT>            mechansimCodes_.put("CKM_CAST128_MAC_GENERAL", new Long(0x00000324));<a name="line.185"></a>
+<FONT color="green">186</FONT>            mechansimCodes_.put("CKM_CAST5_CBC_PAD", new Long(0x00000325));<a name="line.186"></a>
+<FONT color="green">187</FONT>            mechansimCodes_.put("CKM_CAST128_CBC_PAD", new Long(0x00000325));<a name="line.187"></a>
+<FONT color="green">188</FONT>            mechansimCodes_.put("CKM_RC5_KEY_GEN", new Long(0x00000330));<a name="line.188"></a>
+<FONT color="green">189</FONT>            mechansimCodes_.put("CKM_RC5_ECB", new Long(0x00000331));<a name="line.189"></a>
+<FONT color="green">190</FONT>            mechansimCodes_.put("CKM_RC5_CBC", new Long(0x00000332));<a name="line.190"></a>
+<FONT color="green">191</FONT>            mechansimCodes_.put("CKM_RC5_MAC", new Long(0x00000333));<a name="line.191"></a>
+<FONT color="green">192</FONT>            mechansimCodes_.put("CKM_RC5_MAC_GENERAL", new Long(0x00000334));<a name="line.192"></a>
+<FONT color="green">193</FONT>            mechansimCodes_.put("CKM_RC5_CBC_PAD", new Long(0x00000335));<a name="line.193"></a>
+<FONT color="green">194</FONT>            mechansimCodes_.put("CKM_IDEA_KEY_GEN", new Long(0x00000340));<a name="line.194"></a>
+<FONT color="green">195</FONT>            mechansimCodes_.put("CKM_IDEA_ECB", new Long(0x00000341));<a name="line.195"></a>
+<FONT color="green">196</FONT>            mechansimCodes_.put("CKM_IDEA_CBC", new Long(0x00000342));<a name="line.196"></a>
+<FONT color="green">197</FONT>            mechansimCodes_.put("CKM_IDEA_MAC", new Long(0x00000343));<a name="line.197"></a>
+<FONT color="green">198</FONT>            mechansimCodes_.put("CKM_IDEA_MAC_GENERAL", new Long(0x00000344));<a name="line.198"></a>
+<FONT color="green">199</FONT>            mechansimCodes_.put("CKM_IDEA_CBC_PAD", new Long(0x00000345));<a name="line.199"></a>
+<FONT color="green">200</FONT>            mechansimCodes_.put("CKM_GENERIC_SECRET_KEY_GEN", new Long(0x00000350));<a name="line.200"></a>
+<FONT color="green">201</FONT>            mechansimCodes_.put("CKM_CONCATENATE_BASE_AND_KEY", new Long(0x00000360));<a name="line.201"></a>
+<FONT color="green">202</FONT>            mechansimCodes_.put("CKM_CONCATENATE_BASE_AND_DATA", new Long(0x00000362));<a name="line.202"></a>
+<FONT color="green">203</FONT>            mechansimCodes_.put("CKM_CONCATENATE_DATA_AND_BASE", new Long(0x00000363));<a name="line.203"></a>
+<FONT color="green">204</FONT>            mechansimCodes_.put("CKM_XOR_BASE_AND_DATA", new Long(0x00000364));<a name="line.204"></a>
+<FONT color="green">205</FONT>            mechansimCodes_.put("CKM_EXTRACT_KEY_FROM_KEY", new Long(0x00000365));<a name="line.205"></a>
+<FONT color="green">206</FONT>            mechansimCodes_.put("CKM_SSL3_PRE_MASTER_KEY_GEN", new Long(0x00000370));<a name="line.206"></a>
+<FONT color="green">207</FONT>            mechansimCodes_.put("CKM_SSL3_MASTER_KEY_DERIVE", new Long(0x00000371));<a name="line.207"></a>
+<FONT color="green">208</FONT>            mechansimCodes_.put("CKM_SSL3_KEY_AND_MAC_DERIVE", new Long(0x00000372));<a name="line.208"></a>
+<FONT color="green">209</FONT>            mechansimCodes_.put("CKM_SSL3_MD5_MAC", new Long(0x00000380));<a name="line.209"></a>
+<FONT color="green">210</FONT>            mechansimCodes_.put("CKM_SSL3_SHA1_MAC", new Long(0x00000381));<a name="line.210"></a>
+<FONT color="green">211</FONT>            mechansimCodes_.put("CKM_MD5_KEY_DERIVATION", new Long(0x00000390));<a name="line.211"></a>
+<FONT color="green">212</FONT>            mechansimCodes_.put("CKM_MD2_KEY_DERIVATION", new Long(0x00000391));<a name="line.212"></a>
+<FONT color="green">213</FONT>            mechansimCodes_.put("CKM_SHA1_KEY_DERIVATION", new Long(0x00000392));<a name="line.213"></a>
+<FONT color="green">214</FONT>            mechansimCodes_.put("CKM_PBE_MD2_DES_CBC", new Long(0x000003A0));<a name="line.214"></a>
+<FONT color="green">215</FONT>            mechansimCodes_.put("CKM_PBE_MD5_DES_CBC", new Long(0x000003A1));<a name="line.215"></a>
+<FONT color="green">216</FONT>            mechansimCodes_.put("CKM_PBE_MD5_CAST_CBC", new Long(0x000003A2));<a name="line.216"></a>
+<FONT color="green">217</FONT>            mechansimCodes_.put("CKM_PBE_MD5_CAST3_CBC", new Long(0x000003A3));<a name="line.217"></a>
+<FONT color="green">218</FONT>            mechansimCodes_.put("CKM_PBE_MD5_CAST5_CBC", new Long(0x000003A4));<a name="line.218"></a>
+<FONT color="green">219</FONT>            mechansimCodes_.put("CKM_PBE_MD5_CAST128_CBC", new Long(0x000003A4));<a name="line.219"></a>
+<FONT color="green">220</FONT>            mechansimCodes_.put("CKM_PBE_SHA1_CAST5_CBC", new Long(0x000003A5));<a name="line.220"></a>
+<FONT color="green">221</FONT>            mechansimCodes_.put("CKM_PBE_SHA1_CAST128_CBC", new Long(0x000003A5));<a name="line.221"></a>
+<FONT color="green">222</FONT>            mechansimCodes_.put("CKM_PBE_SHA1_RC4_128", new Long(0x000003A6));<a name="line.222"></a>
+<FONT color="green">223</FONT>            mechansimCodes_.put("CKM_PBE_SHA1_RC4_40", new Long(0x000003A7));<a name="line.223"></a>
+<FONT color="green">224</FONT>            mechansimCodes_.put("CKM_PBE_SHA1_DES3_EDE_CBC", new Long(0x000003A8));<a name="line.224"></a>
+<FONT color="green">225</FONT>            mechansimCodes_.put("CKM_PBE_SHA1_DES2_EDE_CBC", new Long(0x000003A9));<a name="line.225"></a>
+<FONT color="green">226</FONT>            mechansimCodes_.put("CKM_PBE_SHA1_RC2_128_CBC", new Long(0x000003AA));<a name="line.226"></a>
+<FONT color="green">227</FONT>            mechansimCodes_.put("CKM_PBE_SHA1_RC2_40_CBC", new Long(0x000003AB));<a name="line.227"></a>
+<FONT color="green">228</FONT>            mechansimCodes_.put("CKM_PKCS5_PBKD2", new Long(0x000003B0));<a name="line.228"></a>
+<FONT color="green">229</FONT>            mechansimCodes_.put("CKM_PBA_SHA1_WITH_SHA1_HMAC", new Long(0x000003C0));<a name="line.229"></a>
+<FONT color="green">230</FONT>            mechansimCodes_.put("CKM_KEY_WRAP_LYNKS", new Long(0x00000400));<a name="line.230"></a>
+<FONT color="green">231</FONT>            mechansimCodes_.put("CKM_KEY_WRAP_SET_OAEP", new Long(0x00000401));<a name="line.231"></a>
+<FONT color="green">232</FONT>            mechansimCodes_.put("CKM_SKIPJACK_KEY_GEN", new Long(0x00001000));<a name="line.232"></a>
+<FONT color="green">233</FONT>            mechansimCodes_.put("CKM_SKIPJACK_ECB64", new Long(0x00001001));<a name="line.233"></a>
+<FONT color="green">234</FONT>            mechansimCodes_.put("CKM_SKIPJACK_CBC64", new Long(0x00001002));<a name="line.234"></a>
+<FONT color="green">235</FONT>            mechansimCodes_.put("CKM_SKIPJACK_OFB64", new Long(0x00001003));<a name="line.235"></a>
+<FONT color="green">236</FONT>            mechansimCodes_.put("CKM_SKIPJACK_CFB64", new Long(0x00001004));<a name="line.236"></a>
+<FONT color="green">237</FONT>            mechansimCodes_.put("CKM_SKIPJACK_CFB32", new Long(0x00001005));<a name="line.237"></a>
+<FONT color="green">238</FONT>            mechansimCodes_.put("CKM_SKIPJACK_CFB16", new Long(0x00001006));<a name="line.238"></a>
+<FONT color="green">239</FONT>            mechansimCodes_.put("CKM_SKIPJACK_CFB8", new Long(0x00001007));<a name="line.239"></a>
+<FONT color="green">240</FONT>            mechansimCodes_.put("CKM_SKIPJACK_WRAP", new Long(0x00001008));<a name="line.240"></a>
+<FONT color="green">241</FONT>            mechansimCodes_.put("CKM_SKIPJACK_PRIVATE_WRAP", new Long(0x00001009));<a name="line.241"></a>
+<FONT color="green">242</FONT>            mechansimCodes_.put("CKM_SKIPJACK_RELAYX", new Long(0x0000100a));<a name="line.242"></a>
+<FONT color="green">243</FONT>            mechansimCodes_.put("CKM_KEA_KEY_PAIR_GEN", new Long(0x00001010));<a name="line.243"></a>
+<FONT color="green">244</FONT>            mechansimCodes_.put("CKM_KEA_KEY_DERIVE", new Long(0x00001011));<a name="line.244"></a>
+<FONT color="green">245</FONT>            mechansimCodes_.put("CKM_FORTEZZA_TIMESTAMP", new Long(0x00001020));<a name="line.245"></a>
+<FONT color="green">246</FONT>            mechansimCodes_.put("CKM_BATON_KEY_GEN", new Long(0x00001030));<a name="line.246"></a>
+<FONT color="green">247</FONT>            mechansimCodes_.put("CKM_BATON_ECB128", new Long(0x00001031));<a name="line.247"></a>
+<FONT color="green">248</FONT>            mechansimCodes_.put("CKM_BATON_ECB96", new Long(0x00001032));<a name="line.248"></a>
+<FONT color="green">249</FONT>            mechansimCodes_.put("CKM_BATON_CBC128", new Long(0x00001033));<a name="line.249"></a>
+<FONT color="green">250</FONT>            mechansimCodes_.put("CKM_BATON_COUNTER", new Long(0x00001034));<a name="line.250"></a>
+<FONT color="green">251</FONT>            mechansimCodes_.put("CKM_BATON_SHUFFLE", new Long(0x00001035));<a name="line.251"></a>
+<FONT color="green">252</FONT>            mechansimCodes_.put("CKM_BATON_WRAP", new Long(0x00001036));<a name="line.252"></a>
+<FONT color="green">253</FONT>            mechansimCodes_.put("CKM_ECDSA_KEY_PAIR_GEN", new Long(0x00001040));<a name="line.253"></a>
+<FONT color="green">254</FONT>            mechansimCodes_.put("CKM_ECDSA", new Long(0x00001041));<a name="line.254"></a>
+<FONT color="green">255</FONT>            mechansimCodes_.put("CKM_ECDSA_SHA1", new Long(0x00001042));<a name="line.255"></a>
+<FONT color="green">256</FONT>            mechansimCodes_.put("CKM_JUNIPER_KEY_GEN", new Long(0x00001060));<a name="line.256"></a>
+<FONT color="green">257</FONT>            mechansimCodes_.put("CKM_JUNIPER_ECB128", new Long(0x00001061));<a name="line.257"></a>
+<FONT color="green">258</FONT>            mechansimCodes_.put("CKM_JUNIPER_CBC128", new Long(0x00001062));<a name="line.258"></a>
+<FONT color="green">259</FONT>            mechansimCodes_.put("CKM_JUNIPER_COUNTER", new Long(0x00001063));<a name="line.259"></a>
+<FONT color="green">260</FONT>            mechansimCodes_.put("CKM_JUNIPER_SHUFFLE", new Long(0x00001064));<a name="line.260"></a>
+<FONT color="green">261</FONT>            mechansimCodes_.put("CKM_JUNIPER_WRAP", new Long(0x00001065));<a name="line.261"></a>
+<FONT color="green">262</FONT>            mechansimCodes_.put("CKM_FASTHASH", new Long(0x00001070));<a name="line.262"></a>
+<FONT color="green">263</FONT>            mechansimCodes_.put("CKM_VENDOR_DEFINED", new Long(0x80000000));<a name="line.263"></a>
+<FONT color="green">264</FONT>          }<a name="line.264"></a>
+<FONT color="green">265</FONT>    <a name="line.265"></a>
+<FONT color="green">266</FONT>          mechanismCode = (Long) mechansimCodes_.get(mechansimName);<a name="line.266"></a>
+<FONT color="green">267</FONT>        }<a name="line.267"></a>
+<FONT color="green">268</FONT>    <a name="line.268"></a>
+<FONT color="green">269</FONT>        return mechanismCode ;<a name="line.269"></a>
+<FONT color="green">270</FONT>      }<a name="line.270"></a>
+<FONT color="green">271</FONT>    <a name="line.271"></a>
+<FONT color="green">272</FONT>      /**<a name="line.272"></a>
+<FONT color="green">273</FONT>       * Lists all available tokens of the given module and lets the user select<a name="line.273"></a>
+<FONT color="green">274</FONT>       * one, if there is more than one available.<a name="line.274"></a>
+<FONT color="green">275</FONT>       *<a name="line.275"></a>
+<FONT color="green">276</FONT>       * @param pkcs11Module The PKCS#11 module to use.<a name="line.276"></a>
+<FONT color="green">277</FONT>       * @param output The output stream to write the user prompts to.<a name="line.277"></a>
+<FONT color="green">278</FONT>       * @param input The input stream where to read user input from.<a name="line.278"></a>
+<FONT color="green">279</FONT>       * @return The selected token or null, if no token is available or the user<a name="line.279"></a>
+<FONT color="green">280</FONT>       *         canceled the action.<a name="line.280"></a>
+<FONT color="green">281</FONT>       * @exception TokenException If listing the tokens failed.<a name="line.281"></a>
+<FONT color="green">282</FONT>       * @exception IOException If writing a user prompt faild or if reading user<a name="line.282"></a>
+<FONT color="green">283</FONT>       *                        input failed.<a name="line.283"></a>
+<FONT color="green">284</FONT>       * @preconditions (pkcs11Module &lt;> null)<a name="line.284"></a>
+<FONT color="green">285</FONT>       *                and (output &lt;> null)<a name="line.285"></a>
+<FONT color="green">286</FONT>       *                and (input &lt;> null)<a name="line.286"></a>
+<FONT color="green">287</FONT>       * @postconditions<a name="line.287"></a>
+<FONT color="green">288</FONT>       */<a name="line.288"></a>
+<FONT color="green">289</FONT>      public static Token selectToken(Module pkcs11Module, PrintWriter output, BufferedReader input)<a name="line.289"></a>
+<FONT color="green">290</FONT>          throws TokenException, IOException<a name="line.290"></a>
+<FONT color="green">291</FONT>      {<a name="line.291"></a>
+<FONT color="green">292</FONT>        if (pkcs11Module == null) {<a name="line.292"></a>
+<FONT color="green">293</FONT>          throw new NullPointerException("Argument \"pkcs11Module\" must not be null.");<a name="line.293"></a>
+<FONT color="green">294</FONT>        }<a name="line.294"></a>
+<FONT color="green">295</FONT>        if (output == null) {<a name="line.295"></a>
+<FONT color="green">296</FONT>          throw new NullPointerException("Argument \"output\" must not be null.");<a name="line.296"></a>
+<FONT color="green">297</FONT>        }<a name="line.297"></a>
+<FONT color="green">298</FONT>        if (input == null) {<a name="line.298"></a>
+<FONT color="green">299</FONT>          throw new NullPointerException("Argument \"input\" must not be null.");<a name="line.299"></a>
+<FONT color="green">300</FONT>        }<a name="line.300"></a>
+<FONT color="green">301</FONT>    <a name="line.301"></a>
+<FONT color="green">302</FONT>        output.println("################################################################################");<a name="line.302"></a>
+<FONT color="green">303</FONT>        output.println("getting list of all tokens");<a name="line.303"></a>
+<FONT color="green">304</FONT>        Slot[] slotsWithToken = pkcs11Module.getSlotList(Module.SlotRequirement.TOKEN_PRESENT);<a name="line.304"></a>
+<FONT color="green">305</FONT>        Token[] tokens = new Token[slotsWithToken.length];<a name="line.305"></a>
+<FONT color="green">306</FONT>        Hashtable tokenIDtoToken = new Hashtable(tokens.length);<a name="line.306"></a>
+<FONT color="green">307</FONT>    <a name="line.307"></a>
+<FONT color="green">308</FONT>        for (int i = 0; i &lt; slotsWithToken.length; i++) {<a name="line.308"></a>
+<FONT color="green">309</FONT>          output.println("________________________________________________________________________________");<a name="line.309"></a>
+<FONT color="green">310</FONT>          tokens[i] = slotsWithToken[i].getToken();<a name="line.310"></a>
+<FONT color="green">311</FONT>          TokenInfo tokenInfo = tokens[i].getTokenInfo();<a name="line.311"></a>
+<FONT color="green">312</FONT>          long tokenID = tokens[i].getTokenID();<a name="line.312"></a>
+<FONT color="green">313</FONT>          tokenIDtoToken.put(new Long(tokenID), tokens[i]);<a name="line.313"></a>
+<FONT color="green">314</FONT>          output.println("Token ID: " + tokenID);<a name="line.314"></a>
+<FONT color="green">315</FONT>          output.println(tokenInfo);<a name="line.315"></a>
+<FONT color="green">316</FONT>          output.println("________________________________________________________________________________");<a name="line.316"></a>
+<FONT color="green">317</FONT>        }<a name="line.317"></a>
+<FONT color="green">318</FONT>        output.println("################################################################################");<a name="line.318"></a>
+<FONT color="green">319</FONT>    <a name="line.319"></a>
+<FONT color="green">320</FONT>        output.println("################################################################################");<a name="line.320"></a>
+<FONT color="green">321</FONT>        Token token = null;<a name="line.321"></a>
+<FONT color="green">322</FONT>        Long selectedTokenID = null;<a name="line.322"></a>
+<FONT color="green">323</FONT>        if (tokens.length == 0) {<a name="line.323"></a>
+<FONT color="green">324</FONT>          output.println("There is no slot with a present token.");<a name="line.324"></a>
+<FONT color="green">325</FONT>        } else if (tokens.length == 1) {<a name="line.325"></a>
+<FONT color="green">326</FONT>          output.println("Taking token with ID: " + tokens[0].getTokenID());<a name="line.326"></a>
+<FONT color="green">327</FONT>          selectedTokenID = new Long(tokens[0].getTokenID());<a name="line.327"></a>
+<FONT color="green">328</FONT>          token = tokens[0];<a name="line.328"></a>
+<FONT color="green">329</FONT>        } else {<a name="line.329"></a>
+<FONT color="green">330</FONT>          boolean gotTokenID = false;<a name="line.330"></a>
+<FONT color="green">331</FONT>          while (!gotTokenID) {<a name="line.331"></a>
+<FONT color="green">332</FONT>            output.print("Enter the ID of the token to use or 'x' to exit: ");<a name="line.332"></a>
+<FONT color="green">333</FONT>            output.flush();<a name="line.333"></a>
+<FONT color="green">334</FONT>            String tokenIDstring = input.readLine();<a name="line.334"></a>
+<FONT color="green">335</FONT>            if (tokenIDstring.equalsIgnoreCase("x")) {<a name="line.335"></a>
+<FONT color="green">336</FONT>              break;<a name="line.336"></a>
+<FONT color="green">337</FONT>            }<a name="line.337"></a>
+<FONT color="green">338</FONT>            try {<a name="line.338"></a>
+<FONT color="green">339</FONT>              selectedTokenID = new Long(tokenIDstring);<a name="line.339"></a>
+<FONT color="green">340</FONT>              token = (Token) tokenIDtoToken.get(selectedTokenID);<a name="line.340"></a>
+<FONT color="green">341</FONT>              if (token != null) {<a name="line.341"></a>
+<FONT color="green">342</FONT>                gotTokenID = true;<a name="line.342"></a>
+<FONT color="green">343</FONT>              } else {<a name="line.343"></a>
+<FONT color="green">344</FONT>                output.println("A token with the entered ID \"" + tokenIDstring + "\" does not exist. Try again.");<a name="line.344"></a>
+<FONT color="green">345</FONT>              }<a name="line.345"></a>
+<FONT color="green">346</FONT>            } catch (NumberFormatException ex) {<a name="line.346"></a>
+<FONT color="green">347</FONT>              output.println("The entered ID \"" + tokenIDstring + "\" is invalid. Try again.");<a name="line.347"></a>
+<FONT color="green">348</FONT>            }<a name="line.348"></a>
+<FONT color="green">349</FONT>          }<a name="line.349"></a>
+<FONT color="green">350</FONT>        }<a name="line.350"></a>
+<FONT color="green">351</FONT>        output.println("################################################################################");<a name="line.351"></a>
+<FONT color="green">352</FONT>    <a name="line.352"></a>
+<FONT color="green">353</FONT>        return token ;<a name="line.353"></a>
+<FONT color="green">354</FONT>      }<a name="line.354"></a>
+<FONT color="green">355</FONT>    <a name="line.355"></a>
+<FONT color="green">356</FONT>      /**<a name="line.356"></a>
+<FONT color="green">357</FONT>       * Opens an authorized session for the given token. If the token requires the<a name="line.357"></a>
+<FONT color="green">358</FONT>       * user to login for private operations, the method loggs in the user.<a name="line.358"></a>
+<FONT color="green">359</FONT>       *<a name="line.359"></a>
+<FONT color="green">360</FONT>       * @param token The token to open a session for.<a name="line.360"></a>
+<FONT color="green">361</FONT>       * @param rwSession If the session should be a read-write session. This may be<a name="line.361"></a>
+<FONT color="green">362</FONT>       *                  Token.SessionReadWriteBehavior.RO_SESSION or<a name="line.362"></a>
+<FONT color="green">363</FONT>       *                  Token.SessionReadWriteBehavior.RW_SESSION.<a name="line.363"></a>
+<FONT color="green">364</FONT>       * @param output The output stream to write the user prompts to.<a name="line.364"></a>
+<FONT color="green">365</FONT>       * @param input The input stream where to read user input from.<a name="line.365"></a>
+<FONT color="green">366</FONT>       * @return The selected token or null, if no token is available or the user<a name="line.366"></a>
+<FONT color="green">367</FONT>       *         canceled the action.<a name="line.367"></a>
+<FONT color="green">368</FONT>       * @exception TokenException If listing the tokens failed.<a name="line.368"></a>
+<FONT color="green">369</FONT>       * @exception IOException If writing a user prompt faild or if reading user<a name="line.369"></a>
+<FONT color="green">370</FONT>       *                        input failed.<a name="line.370"></a>
+<FONT color="green">371</FONT>       * @preconditions (token &lt;> null)<a name="line.371"></a>
+<FONT color="green">372</FONT>       *                and (output &lt;> null)<a name="line.372"></a>
+<FONT color="green">373</FONT>       *                and (input &lt;> null)<a name="line.373"></a>
+<FONT color="green">374</FONT>       * @postconditions (result &lt;> null)<a name="line.374"></a>
+<FONT color="green">375</FONT>       */<a name="line.375"></a>
+<FONT color="green">376</FONT>      public static Session openAuthorizedSession(Token token, boolean rwSession, PrintWriter output, BufferedReader input)<a name="line.376"></a>
+<FONT color="green">377</FONT>          throws TokenException, IOException<a name="line.377"></a>
+<FONT color="green">378</FONT>      {<a name="line.378"></a>
+<FONT color="green">379</FONT>        if (token == null) {<a name="line.379"></a>
+<FONT color="green">380</FONT>          throw new NullPointerException("Argument \"token\" must not be null.");<a name="line.380"></a>
+<FONT color="green">381</FONT>        }<a name="line.381"></a>
+<FONT color="green">382</FONT>        if (output == null) {<a name="line.382"></a>
+<FONT color="green">383</FONT>          throw new NullPointerException("Argument \"output\" must not be null.");<a name="line.383"></a>
+<FONT color="green">384</FONT>        }<a name="line.384"></a>
+<FONT color="green">385</FONT>        if (input == null) {<a name="line.385"></a>
+<FONT color="green">386</FONT>          throw new NullPointerException("Argument \"input\" must not be null.");<a name="line.386"></a>
+<FONT color="green">387</FONT>        }<a name="line.387"></a>
+<FONT color="green">388</FONT>    <a name="line.388"></a>
+<FONT color="green">389</FONT>        output.println("################################################################################");<a name="line.389"></a>
+<FONT color="green">390</FONT>        output.println("opening session");<a name="line.390"></a>
+<FONT color="green">391</FONT>        Session session =<a name="line.391"></a>
+<FONT color="green">392</FONT>            token.openSession(Token.SessionType.SERIAL_SESSION, rwSession, null, null);<a name="line.392"></a>
+<FONT color="green">393</FONT>    <a name="line.393"></a>
+<FONT color="green">394</FONT>        TokenInfo tokenInfo = token.getTokenInfo();<a name="line.394"></a>
+<FONT color="green">395</FONT>        if (tokenInfo.isLoginRequired()) {<a name="line.395"></a>
+<FONT color="green">396</FONT>          if (tokenInfo.isProtectedAuthenticationPath()) {<a name="line.396"></a>
+<FONT color="green">397</FONT>            output.print("Please enter the user-PIN at the PIN-pad of your reader.");<a name="line.397"></a>
+<FONT color="green">398</FONT>            output.flush();<a name="line.398"></a>
+<FONT color="green">399</FONT>            session.login(Session.UserType.USER, null); // the token prompts the PIN by other means; e.g. PIN-pad<a name="line.399"></a>
+<FONT color="green">400</FONT>          } else {<a name="line.400"></a>
+<FONT color="green">401</FONT>            output.print("Enter user-PIN and press [return key]: ");<a name="line.401"></a>
+<FONT color="green">402</FONT>            output.flush();<a name="line.402"></a>
+<FONT color="green">403</FONT>            String userPINString = input.readLine();<a name="line.403"></a>
+<FONT color="green">404</FONT>            session.login(Session.UserType.USER, userPINString.toCharArray());<a name="line.404"></a>
+<FONT color="green">405</FONT>          }<a name="line.405"></a>
+<FONT color="green">406</FONT>        }<a name="line.406"></a>
+<FONT color="green">407</FONT>        output.println("################################################################################");<a name="line.407"></a>
+<FONT color="green">408</FONT>    <a name="line.408"></a>
+<FONT color="green">409</FONT>        return session ;<a name="line.409"></a>
+<FONT color="green">410</FONT>      }<a name="line.410"></a>
+<FONT color="green">411</FONT>    <a name="line.411"></a>
+<FONT color="green">412</FONT>      /**<a name="line.412"></a>
+<FONT color="green">413</FONT>       * Lists all keys that match the given key template and lets the user choose<a name="line.413"></a>
+<FONT color="green">414</FONT>       * one, if there is more than one. If there is a corresponding certificate for<a name="line.414"></a>
+<FONT color="green">415</FONT>       * a key, this method displays the certificate for this key.<a name="line.415"></a>
+<FONT color="green">416</FONT>       *<a name="line.416"></a>
+<FONT color="green">417</FONT>       * @param session The session to use for key and certificate searching.<a name="line.417"></a>
+<FONT color="green">418</FONT>       * @param keyTemplate The template for searching for keys.<a name="line.418"></a>
+<FONT color="green">419</FONT>       * @param output The output stream to write the user prompts to.<a name="line.419"></a>
+<FONT color="green">420</FONT>       * @param input The input stream where to read user input from.<a name="line.420"></a>
+<FONT color="green">421</FONT>       * @return The selected key or null, if there is no matching key or the user<a name="line.421"></a>
+<FONT color="green">422</FONT>       *         canceled the operation. The return object also contains a<a name="line.422"></a>
+<FONT color="green">423</FONT>       *         corresponding certificate, if there is one for the selected key.<a name="line.423"></a>
+<FONT color="green">424</FONT>       * @exception TokenException If searching for keys or certificates failed.<a name="line.424"></a>
+<FONT color="green">425</FONT>       * @exception IOException If writing a user prompt faild or if reading user<a name="line.425"></a>
+<FONT color="green">426</FONT>       *                        input failed.<a name="line.426"></a>
+<FONT color="green">427</FONT>       * @preconditions (session &lt;> null)<a name="line.427"></a>
+<FONT color="green">428</FONT>       *                and (keyTemplate &lt;> keyTemplate)<a name="line.428"></a>
+<FONT color="green">429</FONT>       *                and (output &lt;> null)<a name="line.429"></a>
+<FONT color="green">430</FONT>       *                and (input &lt;> null)<a name="line.430"></a>
+<FONT color="green">431</FONT>       * @postconditions (result &lt;> null)<a name="line.431"></a>
+<FONT color="green">432</FONT>       */<a name="line.432"></a>
+<FONT color="green">433</FONT>      public static KeyAndCertificate selectKeyAndCertificate(Session session, Key keyTemplate,<a name="line.433"></a>
+<FONT color="green">434</FONT>                                                              PrintWriter output, BufferedReader input)<a name="line.434"></a>
+<FONT color="green">435</FONT>          throws TokenException, IOException<a name="line.435"></a>
+<FONT color="green">436</FONT>      {<a name="line.436"></a>
+<FONT color="green">437</FONT>        if (session == null) {<a name="line.437"></a>
+<FONT color="green">438</FONT>          throw new NullPointerException("Argument \"session\" must not be null.");<a name="line.438"></a>
+<FONT color="green">439</FONT>        }<a name="line.439"></a>
+<FONT color="green">440</FONT>        if (keyTemplate == null) {<a name="line.440"></a>
+<FONT color="green">441</FONT>          throw new NullPointerException("Argument \"keyTemplate\" must not be null.");<a name="line.441"></a>
+<FONT color="green">442</FONT>        }<a name="line.442"></a>
+<FONT color="green">443</FONT>        if (output == null) {<a name="line.443"></a>
+<FONT color="green">444</FONT>          throw new NullPointerException("Argument \"output\" must not be null.");<a name="line.444"></a>
+<FONT color="green">445</FONT>        }<a name="line.445"></a>
+<FONT color="green">446</FONT>        if (input == null) {<a name="line.446"></a>
+<FONT color="green">447</FONT>          throw new NullPointerException("Argument \"input\" must not be null.");<a name="line.447"></a>
+<FONT color="green">448</FONT>        }<a name="line.448"></a>
+<FONT color="green">449</FONT>    <a name="line.449"></a>
+<FONT color="green">450</FONT>        output.println("################################################################################");<a name="line.450"></a>
+<FONT color="green">451</FONT>        output.println("searching for keys");<a name="line.451"></a>
+<FONT color="green">452</FONT>    <a name="line.452"></a>
+<FONT color="green">453</FONT>        Vector keyList = new Vector(4);<a name="line.453"></a>
+<FONT color="green">454</FONT>    <a name="line.454"></a>
+<FONT color="green">455</FONT>        session.findObjectsInit(keyTemplate);<a name="line.455"></a>
+<FONT color="green">456</FONT>        Object[] matchingKeys;<a name="line.456"></a>
+<FONT color="green">457</FONT>    <a name="line.457"></a>
+<FONT color="green">458</FONT>        while ((matchingKeys = session.findObjects(1)).length > 0) {<a name="line.458"></a>
+<FONT color="green">459</FONT>          keyList.addElement(matchingKeys[0]);<a name="line.459"></a>
+<FONT color="green">460</FONT>        }<a name="line.460"></a>
+<FONT color="green">461</FONT>        session.findObjectsFinal();<a name="line.461"></a>
+<FONT color="green">462</FONT>    <a name="line.462"></a>
+<FONT color="green">463</FONT>        // try to find the corresponding certificates for the signature keys<a name="line.463"></a>
+<FONT color="green">464</FONT>        Hashtable keyToCertificateTable = new Hashtable(4);<a name="line.464"></a>
+<FONT color="green">465</FONT>        Enumeration keyListEnumeration = keyList.elements();<a name="line.465"></a>
+<FONT color="green">466</FONT>        while (keyListEnumeration.hasMoreElements()) {<a name="line.466"></a>
+<FONT color="green">467</FONT>          PrivateKey signatureKey = (PrivateKey) keyListEnumeration.nextElement();<a name="line.467"></a>
+<FONT color="green">468</FONT>          byte[] keyID = signatureKey.getId().getByteArrayValue();<a name="line.468"></a>
+<FONT color="green">469</FONT>          X509PublicKeyCertificate certificateTemplate = new X509PublicKeyCertificate();<a name="line.469"></a>
+<FONT color="green">470</FONT>          certificateTemplate.getId().setByteArrayValue(keyID);<a name="line.470"></a>
+<FONT color="green">471</FONT>    <a name="line.471"></a>
+<FONT color="green">472</FONT>          session.findObjectsInit(certificateTemplate);<a name="line.472"></a>
+<FONT color="green">473</FONT>          Object[] correspondingCertificates = session.findObjects(1);<a name="line.473"></a>
+<FONT color="green">474</FONT>    <a name="line.474"></a>
+<FONT color="green">475</FONT>          if (correspondingCertificates.length > 0) {<a name="line.475"></a>
+<FONT color="green">476</FONT>            keyToCertificateTable.put(signatureKey, correspondingCertificates[0]);<a name="line.476"></a>
+<FONT color="green">477</FONT>          }<a name="line.477"></a>
+<FONT color="green">478</FONT>          session.findObjectsFinal();<a name="line.478"></a>
+<FONT color="green">479</FONT>        }<a name="line.479"></a>
+<FONT color="green">480</FONT>    <a name="line.480"></a>
+<FONT color="green">481</FONT>        Key selectedKey = null;<a name="line.481"></a>
+<FONT color="green">482</FONT>        X509PublicKeyCertificate correspondingCertificate = null;<a name="line.482"></a>
+<FONT color="green">483</FONT>        if (keyList.size() == 0) {<a name="line.483"></a>
+<FONT color="green">484</FONT>          output.println("Found NO matching key that can be used.");<a name="line.484"></a>
+<FONT color="green">485</FONT>        } else if (keyList.size() == 1) {<a name="line.485"></a>
+<FONT color="green">486</FONT>          // there is no choice, take this key<a name="line.486"></a>
+<FONT color="green">487</FONT>          selectedKey = (Key) keyList.elementAt(0);<a name="line.487"></a>
+<FONT color="green">488</FONT>          // create a IAIK JCE certificate from the PKCS11 certificate<a name="line.488"></a>
+<FONT color="green">489</FONT>          correspondingCertificate = (X509PublicKeyCertificate) keyToCertificateTable.get(selectedKey);<a name="line.489"></a>
+<FONT color="green">490</FONT>          String correspondingCertificateString = toString(correspondingCertificate);<a name="line.490"></a>
+<FONT color="green">491</FONT>          output.println("Found just one private RSA signing key. This key will be used:");<a name="line.491"></a>
+<FONT color="green">492</FONT>          output.println(selectedKey);<a name="line.492"></a>
+<FONT color="green">493</FONT>          output.println("--------------------------------------------------------------------------------");<a name="line.493"></a>
+<FONT color="green">494</FONT>          output.println("The certificate for this key is:");<a name="line.494"></a>
+<FONT color="green">495</FONT>          output.println((correspondingCertificateString != null)<a name="line.495"></a>
+<FONT color="green">496</FONT>                         ? correspondingCertificateString<a name="line.496"></a>
+<FONT color="green">497</FONT>                         : "&lt;no certificate found>");<a name="line.497"></a>
+<FONT color="green">498</FONT>        } else {<a name="line.498"></a>
+<FONT color="green">499</FONT>          // give the user the choice<a name="line.499"></a>
+<FONT color="green">500</FONT>          output.println("found these private RSA signing keys:");<a name="line.500"></a>
+<FONT color="green">501</FONT>          Hashtable objectHandleToObjectMap = new Hashtable(keyList.size());<a name="line.501"></a>
+<FONT color="green">502</FONT>          Enumeration keyListEnumeration2 = keyList.elements();<a name="line.502"></a>
+<FONT color="green">503</FONT>          while (keyListEnumeration2.hasMoreElements()) {<a name="line.503"></a>
+<FONT color="green">504</FONT>            Object signatureKey = (Object) keyListEnumeration2.nextElement();<a name="line.504"></a>
+<FONT color="green">505</FONT>            long objectHandle = signatureKey.getObjectHandle();<a name="line.505"></a>
+<FONT color="green">506</FONT>            objectHandleToObjectMap.put(new Long(objectHandle), signatureKey);<a name="line.506"></a>
+<FONT color="green">507</FONT>            correspondingCertificate = (X509PublicKeyCertificate) keyToCertificateTable.get(signatureKey);<a name="line.507"></a>
+<FONT color="green">508</FONT>            String correspondingCertificateString = toString(correspondingCertificate);<a name="line.508"></a>
+<FONT color="green">509</FONT>            output.println("________________________________________________________________________________");<a name="line.509"></a>
+<FONT color="green">510</FONT>            output.println("RSA signature key with handle: " + objectHandle);<a name="line.510"></a>
+<FONT color="green">511</FONT>            output.println(signatureKey);<a name="line.511"></a>
+<FONT color="green">512</FONT>            output.println("--------------------------------------------------------------------------------");<a name="line.512"></a>
+<FONT color="green">513</FONT>            output.println("The certificate for this key is: ");<a name="line.513"></a>
+<FONT color="green">514</FONT>            output.println((correspondingCertificateString != null) ? correspondingCertificateString : "&lt;no certificate found>");<a name="line.514"></a>
+<FONT color="green">515</FONT>            output.println("________________________________________________________________________________");<a name="line.515"></a>
+<FONT color="green">516</FONT>          }<a name="line.516"></a>
+<FONT color="green">517</FONT>    <a name="line.517"></a>
+<FONT color="green">518</FONT>          boolean gotObjectHandle = false;<a name="line.518"></a>
+<FONT color="green">519</FONT>          Long selectedObjectHandle;<a name="line.519"></a>
+<FONT color="green">520</FONT>          while (!gotObjectHandle) {<a name="line.520"></a>
+<FONT color="green">521</FONT>            output.print("Enter the handle of the key to use for signing or 'x' to exit: ");<a name="line.521"></a>
+<FONT color="green">522</FONT>            output.flush();<a name="line.522"></a>
+<FONT color="green">523</FONT>            String objectHandleString = input.readLine();<a name="line.523"></a>
+<FONT color="green">524</FONT>            if (objectHandleString.equalsIgnoreCase("x")) {<a name="line.524"></a>
+<FONT color="green">525</FONT>              break;<a name="line.525"></a>
+<FONT color="green">526</FONT>            }<a name="line.526"></a>
+<FONT color="green">527</FONT>            try {<a name="line.527"></a>
+<FONT color="green">528</FONT>              selectedObjectHandle = new Long(objectHandleString);<a name="line.528"></a>
+<FONT color="green">529</FONT>              selectedKey = (RSAPrivateKey) objectHandleToObjectMap.get(selectedObjectHandle);<a name="line.529"></a>
+<FONT color="green">530</FONT>              if (selectedKey != null) {<a name="line.530"></a>
+<FONT color="green">531</FONT>                correspondingCertificate = (X509PublicKeyCertificate) keyToCertificateTable.get(selectedKey);<a name="line.531"></a>
+<FONT color="green">532</FONT>                gotObjectHandle = true;<a name="line.532"></a>
+<FONT color="green">533</FONT>              } else {<a name="line.533"></a>
+<FONT color="green">534</FONT>                output.println("An object with the handle \"" + objectHandleString + "\" does not exist. Try again.");<a name="line.534"></a>
+<FONT color="green">535</FONT>              }<a name="line.535"></a>
+<FONT color="green">536</FONT>            } catch (NumberFormatException ex) {<a name="line.536"></a>
+<FONT color="green">537</FONT>              output.println("The entered handle \"" + objectHandleString + "\" is invalid. Try again.");<a name="line.537"></a>
+<FONT color="green">538</FONT>            }<a name="line.538"></a>
+<FONT color="green">539</FONT>          }<a name="line.539"></a>
+<FONT color="green">540</FONT>        }<a name="line.540"></a>
+<FONT color="green">541</FONT>    <a name="line.541"></a>
+<FONT color="green">542</FONT>        output.println("################################################################################");<a name="line.542"></a>
+<FONT color="green">543</FONT>    <a name="line.543"></a>
+<FONT color="green">544</FONT>        return (selectedKey != null)<a name="line.544"></a>
+<FONT color="green">545</FONT>               ? new KeyAndCertificate(selectedKey, correspondingCertificate)<a name="line.545"></a>
+<FONT color="green">546</FONT>               : null ;<a name="line.546"></a>
+<FONT color="green">547</FONT>      }<a name="line.547"></a>
+<FONT color="green">548</FONT>    <a name="line.548"></a>
+<FONT color="green">549</FONT>      /**<a name="line.549"></a>
+<FONT color="green">550</FONT>       * Gets a string representation of the given PKCS#11 certificate.<a name="line.550"></a>
+<FONT color="green">551</FONT>       *<a name="line.551"></a>
+<FONT color="green">552</FONT>       * @param certificate The PKCS#11 certificate.<a name="line.552"></a>
+<FONT color="green">553</FONT>       * @return The string representing the certificate.<a name="line.553"></a>
+<FONT color="green">554</FONT>       * @preconditions<a name="line.554"></a>
+<FONT color="green">555</FONT>       * @postconditions<a name="line.555"></a>
+<FONT color="green">556</FONT>       */<a name="line.556"></a>
+<FONT color="green">557</FONT>      public static String toString(X509PublicKeyCertificate certificate) {<a name="line.557"></a>
+<FONT color="green">558</FONT>        String certificateString = null;<a name="line.558"></a>
+<FONT color="green">559</FONT>    <a name="line.559"></a>
+<FONT color="green">560</FONT>        if (certificate != null) {<a name="line.560"></a>
+<FONT color="green">561</FONT>          try {<a name="line.561"></a>
+<FONT color="green">562</FONT>            X509Certificate correspondingCertificate = new X509Certificate(certificate.getValue().getByteArrayValue());<a name="line.562"></a>
+<FONT color="green">563</FONT>            certificateString = correspondingCertificate.toString(true);<a name="line.563"></a>
+<FONT color="green">564</FONT>          } catch (Exception ex) {<a name="line.564"></a>
+<FONT color="green">565</FONT>            certificateString = certificate.toString();<a name="line.565"></a>
+<FONT color="green">566</FONT>          }<a name="line.566"></a>
+<FONT color="green">567</FONT>        }<a name="line.567"></a>
+<FONT color="green">568</FONT>    <a name="line.568"></a>
+<FONT color="green">569</FONT>        return certificateString ;<a name="line.569"></a>
+<FONT color="green">570</FONT>      }<a name="line.570"></a>
+<FONT color="green">571</FONT>    <a name="line.571"></a>
+<FONT color="green">572</FONT>    }<a name="line.572"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</PRE>
+</BODY>
+</HTML>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- this is a build script for Apache ANT -->
+
+<project name="iaikPkcs11WrapperInstaller" default="help" basedir=".">
+
+<!-- displays the help screen -->
+  <target name="help">
+    <echo>
+      available targets:
+       - help     : displays this help
+       - compile  : compiles all classes
+       - jar : builds all classes and generates a jar file
+    </echo>
+  </target>
+
+<!-- setting global properties -->
+  <target name="init" description="Sets variables shared between several targets.">
+    <property name="src" value="src"/>
+    <property name="classes" value="classes"/>
+    <property name="wrapper_dir" value="../java/lib"/>
+    <property name="wrapper_file" value="iaikPkcs11Wrapper.jar"/>
+    <property name="native_dir" value="../native/platforms/win32/release"/>
+    <property name="native_file" value="pkcs11wrapper.dll"/>
+    <property name="jar" value="lib/Pkcs11WrapperWin32Installer.jar"/>
+
+    <property name="jarsigning-keystore" value="test/alice.jks"/>
+    <property name="jarsigning-password" value="password"/>
+    <property name="jarsigning-alias" value="alice"/>
+  </target>
+  
+<!-- cleaning  -->
+  <target name="clean" depends="init" description="Removes classes and JARs.">
+    <delete>
+      <fileset dir="${classes}" includes="iaik/**/*"/>
+    </delete>
+    <delete file="${jar}"/>
+  </target>
+
+<!-- compiles the project classes -->
+  <target name="compile" depends="init" description="Compiles the project Java files.">
+    <mkdir dir="${classes}"/> 
+    <javac destdir="${classes}" 
+           failonerror="false" 
+           verbose="false" 
+           debug="on" 
+           includeAntRuntime="no">
+      <src path="${src}"/>
+    </javac>
+  </target>
+
+<!-- compiling all classes and pack it into jars -->
+  <target name="jar" depends="init,compile" description="Builds the project jar file.">
+    <jar jarfile="${jar}" manifest="lib/installer.MF"> 
+      <!-- include all resources, but exclude temporary files of version control (*.scc) -->
+      <fileset dir="${classes}">
+        <include name="iaik/pkcs/pkcs11/wrapper/installer/*.class"/>
+      </fileset>
+      <fileset dir="${wrapper_dir}">
+        <include name="${wrapper_file}"/>
+      </fileset>
+      <fileset dir="${native_dir}">
+        <include name="${native_file}"/>
+      </fileset>
+    </jar>
+    <signjar jar="${jar}" keystore="${jarsigning-keystore}" 
+             storepass="${jarsigning-password}" alias="${jarsigning-alias}"/>
+  </target>
+
+<!-- build all -->
+  <target name="all" depends="init,compile,jar" description="Builds all."/>
+  
+</project>
+

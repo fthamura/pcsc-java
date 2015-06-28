@@ -1,0 +1,16 @@
+SCC = This is a Source Code Control file
+
+[PKCS11wrapper.dsp]
+SCC_Project_Name = "$/SmartCardIntegration/PKCS11wrapper/JavaToPKCS11/native/platforms/win64", QJSFAAAA
+
+[PKCS11wrapper.dsw]
+SCC_Project_Name = "$/SmartCardIntegration/PKCS11wrapper/JavaToPKCS11/native/platforms/win64", QJSFAAAA
+
+[PKCS11Wrapper.mak]
+SCC_Project_Name = "$/SmartCardIntegration/PKCS11wrapper/JavaToPKCS11/native/platforms/win64", QJSFAAAA
+
+[PKCS11wrapper.sln]
+SCC_Project_Name = "$/SmartCardIntegration/PKCS11wrapper/JavaToPKCS11/native/platforms/win64", QJSFAAAA
+
+[PKCS11Wrapper.vcproj]
+SCC_Project_Name = "$/SmartCardIntegration/PKCS11wrapper/JavaToPKCS11/native/platforms/win64", QJSFAAAA

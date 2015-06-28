@@ -1,0 +1,7 @@
+Extension-Name: iaik.pkcs.pkcs11.wrapper
+Specification-Vendor: IAIK
+Specification-Version: 1.2.17
+Implementation-Vendor-Id: iaik
+Implementation-Vendor: IAIK
+Implementation-Version: 1.2.17
+Main-Class: iaik.pkcs.pkcs11.wrapper.installer.WindowsInstaller

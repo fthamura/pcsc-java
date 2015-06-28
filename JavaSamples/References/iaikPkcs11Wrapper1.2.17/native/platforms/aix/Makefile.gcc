@@ -1,0 +1,39 @@
+CC = gcc -Xlinker -b -Xlinker noquiet 
+CC = gcc
+MAKE=make
+SOURCE_DIR = ../../src/
+INCLUDE_DIR = ../../include/
+PLATFORM_INCLUDE = include/
+PLATFORM_SRC_INCLUDE = src/
+PLATFORM_LIBRARIES = lib/
+DEBUG_OUTPUT_DIR = debug/
+RELEASE_OUTPUT_DIR = release/
+#TARGETS = debug release debug11 release11
+TARGETS = debug release
+#CFLAGS= -fPIC -fpack-struct -shared -L$(PLATFORM_LIBRARIES) -ljava -ljvm
+CFLAGS= -fPIC -shared -L$(PLATFORM_LIBRARIES) -ljava -ljvm
+
+all : $(TARGETS)
+
+VPATH = $(SOURCE_DIR) $(INCLUDE_DIR)
+
+phony:
+
+.PHONY	: debug
+debug : phony $(SOURCE_DIR)pkcs11wrapper.c $(INCLUDE_DIR)pkcs11wrapper.h
+	$(CC) -I $(PLATFORM_SRC_INCLUDE) -I $(PLATFORM_INCLUDE) -I $(INCLUDE_DIR) -DUNIX -DDEBUG -g -o $(DEBUG_OUTPUT_DIR)libpkcs11wrapper.so $(SOURCE_DIR)pkcs11wrapper.c $(CFLAGS)
+
+.PHONY	: release
+release : phony $(SOURCE_DIR)pkcs11wrapper.c $(INCLUDE_DIR)pkcs11wrapper.h
+	$(CC) -I $(PLATFORM_SRC_INCLUDE) -I $(PLATFORM_INCLUDE) -I $(INCLUDE_DIR) -DUNIX -o $(RELEASE_OUTPUT_DIR)libpkcs11wrapper.so $(SOURCE_DIR)pkcs11wrapper.c $(CFLAGS)
+	
+.PHONY	: debug11
+debug11 : phony $(SOURCE_DIR)pkcs11wrapper.c $(INCLUDE_DIR)pkcs11wrapper.h
+	$(CC) -I $(PLATFORM_SRC_INCLUDE) -I $(PLATFORM_INCLUDE) -I $(INCLUDE_DIR) -DUNIX -DDEBUG -DNO_CALLBACKS -g -o $(DEBUG_OUTPUT_DIR)libpkcs11wrapper.so $(SOURCE_DIR)pkcs11wrapper.c $(CFLAGS)
+
+.PHONY	: release11
+release11 : phony $(SOURCE_DIR)pkcs11wrapper.c $(INCLUDE_DIR)pkcs11wrapper.h
+	$(CC) -I $(PLATFORM_SRC_INCLUDE) -I $(PLATFORM_INCLUDE) -I $(INCLUDE_DIR) -DUNIX -DNO_CALLBACKS -o $(RELEASE_OUTPUT_DIR)libpkcs11wrapper.so $(SOURCE_DIR)pkcs11wrapper.c $(CFLAGS)
+	
+clean :
+	rm -f $(DEBUG_OUTPUT_DIR)* $(RELEASE_OUTPUT_DIR)*

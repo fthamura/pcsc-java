@@ -1,0 +1,834 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <title>TestedHardware.html</title>
+</head>
+<body>
+  
+  <table border="0" width="100%">
+    <tr>
+    <td width="1%"><a href="http://jce.iaik.tugraz.at/"><img src=
+    "images/siclogo.jpg" alt="SIC Logo" border="0"></a></td>
+    <td width="6%"></td>
+    <td width="1%"><a href="http://jce.iaik.tugraz.at/"><img src=
+    "images/iaik_logo.gif" alt="IAIK Logo" border="0"></a></td>
+    <td width="12%"></td>
+    <td width="82%">
+    <h1>Tested PKCS#11 Compatible Products</h1>
+    </td>
+    </tr>
+  </table>
+
+<body bgcolor="#FFFFFF" text="#000000">
+            <p>This is a list of all products that we have tested ourselves yet 
+            and that we can publish. Several customers of us have tested the wrapper
+            in combination with other smart cards, USB tokens and HSMs on various
+            platforms; e.g. SUN Crypto Accelerator, Crysalis HSM or RSA SecurID tokens. 
+            Even on platforms which are not listed here.
+            <br>In addition, we wrote an own simple PKCS#11 
+            library for testing on all supported platforms. However, the 
+            Wrapper is based on the standard PKCS#11 version 2.11. Thus, it 
+            should work with any product that comes with drivers compliant to 
+            this standard. This includes any version 2.x of PKCS#11; e.g. 2.01 
+            and 2.10.
+            <br> Please notice that if a product is listed here, this 
+            does not necessarily mean that all features of the product have been 
+            tested to work correctly. There are several products in which we 
+            found bugs. Where we found bugs that may prevent the Wrapper to work 
+            correctly, or any application based on it, we mentioned this in the 
+            description of this product below the table.</p>
+            <p>If you are a provider of PKCS#11 libraries of hardware products and you want your product to be listed here, you can contact us <a href="mailto:jce-support@iaik.tugraz.at%20">jce-support@iaik.tugraz.at</a>.</p>
+            <table width="97%" border="1">
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66CC00">&nbsp;</td>
+                <td colspan="5" bgcolor="#66FF00">
+                  <div align="center">Operating System</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66CC00">Product</td>
+                <td width="13%" bgcolor="#66FF00">
+                  <div align="center">Windows 2000</div>
+                </td>
+                <td width="13%" bgcolor="#66FF00">
+                  <div align="center">Windows XP</div>
+                </td>
+                <td width="13%" bgcolor="#66FF00">
+                  <div align="center">Linux</div>
+                </td>
+                <td width="13%" bgcolor="#66FF00">
+                  <div align="center">Solaris</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#ASignPremium">A-Sign Premium</a></td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#aTrustSign">A-Trust trust|mark </a></td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#ActivCard">ActivCard Gold </a></td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#eToken">Aladdin eToken (eToken Pro 16k and 32k)</a></td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#ASE">Athena Smartcard Solutions - ASECard</a></td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#iButton22">Dallas Semiconductors
+      Java-Powered Cryptographic iButton 2.2 </a></td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#Datakey330_32K">Datakey Model
+      330, 32K PKI Smart Card</a></td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFFF">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#CSA7000">Eracom CSA 7000 (CSA/SW)</a></td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#CSA8000">Eracom CSA 8000 (SW)</a></td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#Eutron">Eutron CryptoIdentity</a></td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#StarCOS431">G&D StarCOS 2.3 SPK
+      </a></td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#GemSAFE">Gemplus GemSAFE (GPK4000,
+      GPK8000 and GPK16000)</a> </td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFFF">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#MFC43">IBM MFC 4.3 </a></td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFFF">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td bgcolor="#66FF00"><a href="#mIDentity">Kobil mIDentity</a> </td>
+                <td>&nbsp;</td>
+                <td bgcolor="#FFFFCC"><div align="center">yes</div></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#Mozilla">Mozilla</a></td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#nShield">nCipher nShield</a></td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#AuthentIC">Oberthur AuthentIC 2.1V4</a>
+    </td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFFF">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#Micardo21">Orga Micardo Public
+      v2.1</a> </td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFFF">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#CryptoSwiftHSM">Rainbow CryptoSwift HSM</a></td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#iKey1000">Rainbow iKey1000 </a></td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#iKey2032">Rainbow iKey2032</a></td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#iKey3000">Rainbow iKey3000 </a></td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#ptkc">Safenet ProtectToolkit C SDK (used with Safenet ProtectServer Gold and Safenet ProtectServer External)
+      </a></td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#SCsquare">SC² Apollo OS Cards</a></td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#Cryptoflex">Schlumberger Cryptoflex</a>
+    </td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#Cyberflex">Schlumberger Cyberflex Access (16k, 32k, e-Gate Token)</a></td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%">&nbsp;</td>
+                <td width="13%">&nbsp;</td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#SetCOS431">SeTec SetCard 16K/RSA
+      SetCOS4.3.1</a> </td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFFF">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#CardOS">Siemens CardOS</a></td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#SUNCA1000">SUN Crypto Accelerator 1000</a></td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#SUNCA4000">SUN Crypto Accelerator 4000</a></td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#TeleSec">TeleSec</a></td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#SafeGuardBiometrics">Utimaco SafeGuard
+      Biometrics</a></td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFFF">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+                <td width="13%">
+                  <div align="center">&nbsp;</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00"><a href="#UtimacoCS">Utimaco SafeGuard CryptoServer
+      </a></td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+              </tr>
+              <tr bordercolor="#000000">
+                <td width="35%" bgcolor="#66FF00">IAIK Testlibrary</td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+                <td width="13%" bgcolor="#FFFFCC">
+                  <div align="center">yes</div>
+                </td>
+              </tr>
+  
+            </table>
+            
+            <h3><a name="StarCOS431"><font color="#FF0000">G&D StarCOS 2.3 SPK</font></a></h3>
+            <h4>Software: </h4>
+            <p>AET SafeSign 1.0.8.48 Standard and 2.0.6 Standard</p>
+            <h4>Reader:</h4>
+            <p>Orga CardMous USB V1.1, driver version 1.57<br>
+  Utimaco CardMan 1010 serial<br>
+  Utimaco CardMan 2020 USB<br>
+  Utimaco CardMan Dongle 6020 USB<br>
+  SCM Microsystems SCR201<br>
+  Schlumberger Reflex 20</p>
+  
+            <h3><a name="SafeGuardBiometrics"><font color="#FF0000">Utimaco  SafeGuard Biometrics</font></a></h3>
+            <h4>Software: </h4>
+            <p>SafeGuard Biometrics version 1.50</p>
+            <h4>Reader:</h4>
+            <p>Precise Biometrics 100 SC. This smart card reader has a build-in fingerprint
+  sensor. With this product login with a fingerprint instead of PIN is possible.
+  This feature can be used with the Wrapper. Some demos included in the wrapper
+  use this feature automatically, if available; e.g. GetInfo or SignAndVerify.</p>
+  
+            <h3><a name="AuthentIC"><font color="#FF0000">Oberthur AuthentIC 2.1V4</font></a></h3>
+            <h4>Software: </h4>
+            <p>AuthentIC Web Pack 2.1</p>
+            <h4>Reader:</h4>
+            <p>Oberthur OCR 136 (same as OmniKey CardMan 1010 serial and Utimaco CardMan 1010 serial)</p>
+            
+            <h3><a name="SetCOS431"><font color="#FF0000">SeTec SetCard 16K/RSA SetCOS4.3.1</font></a></h3>
+            <h4>Software: </h4>
+            <p>SetPKI 1.7</p>
+            <h4>Reader:</h4>
+            <p>Orga CardMous USB V1.1, driver version 1.57</p>
+            
+            <h3><a name="Micardo21"><font color="#FF0000">Orga Micardo Public v2.1</font></a></h3>
+            <h4>Software: </h4>
+            <p>PKI Evaluation Kit Version 1.1</p>
+            <h4>Reader:</h4>
+            <p>Orga CardMous USB V1.1, driver version 1.60</p>
+            
+            <h3><a name="MFC43"><font color="#FF0000">IBM MFC 4.3</font></a></h3>
+            <h4>Software: </h4>
+            <p>DSI (Digital Signature for the Internet) 2.1</p>
+            <h4>Reader:</h4>
+            <p>Orga CardMous USB V1.1, driver version 1.57</p>
+            
+            <h3><a name="Datakey330_32K"><font color="#FF0000">Datakey Model 330, 32K PKI Smart Card</font></a></h3>
+            <h4>Software: </h4>
+            <p>Datakey CIP (Cryptographic Interface Provider) 4.6.0 (1.11.024)</p>
+            <h4>Reader:</h4>
+            <p>Orga CardMous USB V1.1, driver version 1.57</p>
+            <h4>Remarks:</h4>
+            <p>The drivers that we had had problems with the find operation. The find operation
+  may not work correctly in all cases. Newer drivers may solve these problems.</p>
+
+            <h3><a name="Cryptoflex"><font color="#FF0000">Schlumberger Cryptoflex</font></a></h3>
+            <h4>Software: </h4>
+            <p>Cyberflex Access Software Development Kit Release 3C</p>
+            <h4>Reader:</h4>
+            <p>Orga CardMous USB V1.1, driver version 1.57<br>
+  Utimaco CardMan 1010 serial <br>
+            </p>
+
+            <h3><a name="Cyberflex"><font color="#FF0000">Schlumberger Cyberflex Access (16k, 32k, e-Gate Token)</font></a></h3>
+            <h4>Software: </h4>
+            <p>Cyberflex Access Software Development Kit Release 4.1</p>
+            <h4>Reader:</h4>
+            <p>Utimaco CardMan 1010 serial<br>
+              Utimaco CardMan 2020 USB<br>
+              Schlumberger e-Gate Token USB<br>
+</p>
+
+            <h3><a name="GemSAFE"><font color="#FF0000">Gemplus GemSAFE (GPK4000, GPK8000 and GPK16000)</font></a></h3>
+            <h4>Software: </h4>
+            <p>GemSAFE 2.1 (GPK4000 and GPK8000)<br>
+  GemSAFE 3.1 SP4 (GPK4000, GPK8000 and GPK16000)</p>
+            <h4>Reader:</h4>
+            <p>Orga CardMous USB V1.1, driver version 1.57<br>
+  Utimaco CardMan 1010 serial <br>
+  HP Jornada 720 built-in smart card reader<br>
+  HP Jornada 568 smart card reader battery pack (prototype)</p>
+
+            <h3><a name="iButton22"><font color="#FF0000">Dallas Semiconductors Java-Powered Cryptographic iButton
+  2.2</font></a></h3>
+            <h4>Software: </h4>
+            <p>PKCS#11 v1.02</p>
+            <h4>Reader:</h4>
+            <p>Blue Dot Receptor, Serial Port</p>
+            <h4>Remarks:</h4>
+            <p>The drivers have problems with the sign operation. We always get a CKR_DEVICE_ERROR
+  when trying to sign some data. </p>
+
+            <h3><a name="iKey1000"><font color="#FF0000">Rainbow iKey1000</font></a></h3>
+            <h4>Software: </h4>
+            <p>Rainbow iKey 1000 Series Software</p>
+            <h4>Reader:</h4>
+            <p>USB port</p>
+            <h4>Remarks:</h4>
+            <p>The drivers that we had had problems with the find and sign operation. Newer
+  drivers may solve these problems.</p>
+
+            <h3><a name="iKey2032"><font color="#FF0000">Rainbow iKey2032</font></a></h3>
+            <h4>Software: </h4>
+            <p>Rainbow iKey 2000 Series Software v4.5.10 SDK</p>
+            <h4>Reader:</h4>
+            <p>USB port</p>
+            <h4>Remarks:</h4>
+            <p>The drivers that we had had problems with the find operation. The find operation
+  may not work correctly in all cases. Newer drivers may solve these problems.
+  Older versions also had a bug in the sign operation.</p>
+
+            <h3><a name="iKey3000"><font color="#FF0000">Rainbow iKey3000</font></a></h3>
+            <h4>Software: </h4>
+            <p>AET SafeSign 1.0.8.48 Standard</p>
+            <h4>Reader:</h4>
+            <p>USB port</p>
+
+            <h3><a name="CryptoSwiftHSM"><font color="#FF0000">Rainbow CryptoSwift HSM</font></a></h3>
+            Tested with the PCI version.
+            <h4>Software: </h4>
+            <p>CryptoSwift HSM IK 4.1.3</p>
+
+            <h3><a name="ActivCard"><font color="#FF0000">ActivCard Gold</font></a></h3>
+            <h4>Software: </h4>
+            <p>ActivCard Gold 1.3 SDK</p>
+            <h4>Reader:</h4>
+            <p>Utimaco CardMan 1010 serial</p>
+
+            <h3><a name="aTrustSign"><font color="#FF0000">A-Trust trust|mark</font></a></h3>
+            <h4>Software: </h4>
+            <p>ID2 Personal 2.8.3</p>
+            <h4>Reader:</h4>
+            <p>Orga CardMous USB V1.1, driver version 1.57<br>
+               Kobil KAAN Standard PLUS, driver version 2002.9.11.1</p>
+
+            <h3><a name="ASignPremium"><font color="#FF0000">A-Sign Premium</font></a></h3>
+            The "OCG-Mitgliedskarte mit Bürgerkarten-Funktionalität" is the same card.
+            <h4>Software: </h4>
+            <p>ID2 Personal v2.8.3 A-Trust<br>
+            (AET SafeSign 1.0.8.48 Standard, tested with older versions of this card)</p>
+            <h4>Reader:</h4>
+            <p>Reiner SCT cyber Jack(R) e-com<br>
+            (Orga CardMous USB V1.1, driver version 1.57, tested with older versions of this card)</p>
+
+            <h3><a name="CSA7000"><font color="#FF0000">Eracom CSA 7000</font></a></h3>
+            Tested with a real hardware security module and with the software emulation of such a hardware module.
+            <h4>Software: </h4>
+            <p>CSA7k Driver 3.71<br>
+            <p>CProv SDK 2.21<br>
+
+            <h3><a name="CSA8000"><font color="#FF0000">Eracom CSA 8000</font></a></h3>
+            Tested with the software emulation of such a hardware module.
+            <h4>Software: </h4>
+            <p>CProv SDK 3.09</p>
+
+            <h3><a name="eToken"><font color="#FF0000">Aladdin eToken (eToken Pro 16k and 32k)</font></a></h3>
+            <h4>Software: </h4>
+            <p>eToken Run Time Environment 3.00 and 3.60</p>
+            <h4>Reader:</h4>
+            <p>USB port</p>
+
+            <h3><a name="Mozilla"><font color="#FF0000">Mozilla</font></a></h3>
+            Mozilla comes with a shared libary, called softokn3.dll under Windows, which provides access to the Mozilla crypto module. This allows access to private keys which are stored in the Mozilla profile. To initialize the Mozilla PKCS#11 module, you need to specify a configuration string which looks like that:<br>
+            <code>configdir='C:/Documents\ and\ Settings/kscheibelhofer/Application\ Data/Mozilla/Profiles/default/cfxcrpru.slt' certPrefix='' keyPrefix='' secmod='secmod.db'</code><br>
+            Please notice the escaped spaces in the profile path.
+            <h4>Software: </h4>
+            <p>Mozilla 1.3</p>
+            
+            <h3><a name="Eutron"><font color="#FF0000">Eutron CryptoIdentity</font></a></h3>
+            This is the same as Algorithmic Research's MiniKey USB token.
+            <h4>Software: </h4>
+            <p>CryptoKit 3.4 (Algorithmic Research version)</p>
+            <h4>Reader:</h4>
+            <p>USB port</p>
+
+            <h3><a name="TeleSec"><font color="#FF0000">TeleSec</font></a></h3>
+            Has been tested with a PKS-Pilot test card.
+            <h4>Software: </h4>
+            <p>TCrypt#11 version 3.3.2</p>
+            <h4>Reader:</h4>
+            <p>Utimaco CardMan 2020 USB</p>
+
+            <h3><a name="nShield"><font color="#FF0000">nCipher nShield</font></a></h3>
+            Has been tested with a 1-of-2 administrator card set and a 1-of-2 operator card set. 
+            The tested nShield version has been a nShield F2 UltraSign PCI.
+            <h4>Software: </h4>
+            <p>CipherTools Development Kit (Release 7.25) for Windows</p>
+            <h4>Reader:</h4>
+            <p>nCipher Chipdrive that comes with the product</p>
+
+            <h3><a name="CardOS"><font color="#FF0000">Siemens CardOS</font></a></h3>
+            Has been tested with a Siemens CardOS 4.01a card.
+            <h4>Software: </h4>
+            <p>Siemens Card API 3.0 RC1-1</p>
+            <h4>Reader:</h4>
+            <p>Omnikey CardMan 1010 Serial</p>
+
+            <h3><a name="SUNCA1000"><font color="#FF0000">SUN Crypto Accelerator 1000</font></a></h3>
+            The SUN Crypto Accelerator 1000 board has been tested on Solaris 8 and Solaris 9.
+            It has been tested with the 32 bit and 64 bit (SPARC v9) version.
+            <h4>Board: </h4>
+            <p>SUN Crypto Accelerator 1000 Board Version 1.1</p>
+            <h4>System:</h4>
+            <p>SUN Blade 100<br>
+               Solaris 8 and Solaris 9</p>
+
+            <h3><a name="SUNCA4000"><font color="#FF0000">SUN Crypto Accelerator 4000</font></a></h3>
+            The SUN Crypto Accelerator 4000 board has been tested on Solaris 8 and Solaris 9.
+            It has been tested with the 32 bit and 64 bit (SPARC v9) version.
+            <h4>Board: </h4>
+            <p>SUN Crypto Accelerator 4000 Board Version 1.1</p>
+            <h4>System:</h4>
+            <p>SUN Blade 100<br>
+               Solaris 8 and Solaris 9</p>
+
+            <h3><a name="SCsquare"><font color="#FF0000">SC² Apollo OS Smart Cards</font></a></h3>
+            We tested Apollo OS smart cards from the Apollo OS Smart Cards Sample Pack.
+            <h4>Software: </h4>
+            <p>SC² PKCS#11 1.12</p>
+            <h4>Reader:</h4>
+            <p>Utimaco CardMan 3121 USB<br>
+               Utimaco CardMan 2010 Serial<br>
+               Reiner SCT CyberJack e-com</p>
+
+            <h3><a name="ASE"><font color="#FF0000">Athena Smartcard Solutions - ASECard</font></a></h3>
+            We tested with blank ASECards from Athena Smartcard Solutions. 
+            Please note that these cards need a reader which supports extended Lc/Le APUs.
+            Often, only very new readers support this feature; e.g. Omnikey Cardman 3121 with
+            firmare version 2.01 or later.
+            <h4>Software: </h4>
+            <p>ASECard Crypto Toolkit 3.22</p>
+            <h4>Reader:</h4>
+            <p>Utimaco CardMan 3121 USB (Firmware 2.02)</p>
+            
+            <h3><a name="mIDentity" id="mIDentity"><font color="#FF0000">Kobil mIDentity </font></a></h3>
+            We tested  a Kobil mIDentity Classic XL with 512 MB RAM..
+            <h4>Software: </h4>
+            <p> Kobil mIDentity V1.5.1 MSDI Build: 20060823.2</p>
+            
+            <h3><a name="UtimacoCS"><font color="#FF0000">Utimaco SafeGuard CryptoServer</font></a></h3>
+            The Utimaco HSM has been configured as a CryptoServer LAN and used with the local installation
+            of the CryptoServer 1.40.1. We received some updates to successfully test new attributes of
+            PKCS#11 2.20.
+            <h4>Software: </h4>
+            <p>Utimaco SafeGuard CryptoServer 1.40.1</p>
+            <h4>Hardware:</h4>
+            <p>Utimaco SafeGuard CryptoServer LAN</p>
+            
+            <h3><a name="ptkc"><font color="#FF0000">Safenet ProtectToolkit C SDK</font></a></h3>
+            We used the software evaluation of Safenet ProtectServer Gold to test the ProtectToolkit C SDK.
+            This software is used with the PCI card Safenet ProtectServer Gold and the
+            HSM Safenet ProtectServer External.
+            <h4>Software: </h4>
+            <p>Safenet ProtectToolkit C SDK 3.32</p>
+            
+            <hr>
+  <center>Copyright (c) 2002-2003 by IAIK. Copyright (C) 2003-2004
+  Stiftung SIC. All rights reserved.</center>
+
+</body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- this is a build script for Apache ANT -->
+
+<project name="iaikPkcs11WrapperDemos" default="help" basedir=".">
+
+<!-- displays the help screen -->
+  <target name="help">
+    <echo>
+      available targets:
+       - help     : displays this help
+       - compile  : compiles all classes
+       - javadoc  : generates the java-doc
+       - buildjar : builds all classes and generates a jar file
+    </echo>
+  </target>
+
+<!-- setting global properties -->
+  <target name="init" description="Sets variables shared between several targets.">
+    <property name="version" value="1.2.7"/>
+    <property name="src" value="src"/>
+    <property name="classes" value="classes"/>
+    <property name="docs" location="docs"/>
+    <property name="lib" value="lib"/>
+    <property name="javadoc" location="${docs}/api-doc"/>
+    <property name="javadoc-src" location="${docs}/api-doc_source"/>
+    <property name="wrapper" value="../java/lib/iaikPkcs11Wrapper.jar"/>
+    <property name="jar" value="${lib}/iaikPkcs11WrapperDemos.jar"/>
+    <path id="base.path">
+      <pathelement location="${wrapper}"/>
+      <pathelement location="${lib}/iaik_cms.jar"/>
+      <pathelement location="${lib}/iaik_jce_full.jar"/>
+    </path>
+  </target>
+  
+<!-- cleaning  -->
+  <target name="clean" depends="init" description="Removes classes and JARs.">
+    <delete dir="${classes}"/>
+    <delete file="${jar}"/>
+  </target>
+
+<!-- compiles the project classes -->
+  <target name="compile" depends="init" description="Compiles the project Java files.">
+    <mkdir dir="${classes}"/> 
+    <javac destdir="${classes}" 
+           failonerror="false" 
+           verbose="false" 
+           debug="on" 
+           includeAntRuntime="no">
+      <src path="${src}"/>
+      <classpath refid="base.path"/>
+    </javac>
+  </target>
+
+<!-- generates the javadoc -->
+  <target name="javadoc" depends="init" description="Generates JavaDoc for the project.">
+    <mkdir dir="${docs}"/>
+    <mkdir dir="${javadoc}"/>
+    <javadoc destdir="${javadoc}" 
+             author="true" 
+             version="true" 
+             use="true"
+             windowtitle="IAIK PKCS#11 Wrapper Demos"
+             additionalparam="-linksource -tag invariants:t:Invariants -tag preconditions:cm:Preconditions -tag postconditions:cm:Postconditions">
+      <doctitle>IAIK PKCS#11 Wrapper</doctitle>
+      <header>
+        <![CDATA[
+          <b>IAIK PKCS#11 Wrapper Demos</b><br>
+          <font size="-1">version ${version}</font>
+         ]]>
+      </header>
+      <bottom>
+        <![CDATA[
+          <font size="-1">IAIK JavaSecurity Website <a href="http://jce.iaik.tugraz.at/">http://jce.iaik.tugraz.at/</a><br>
+            <br> IAIK at Graz University of Technology, Austria, Europe 
+            <br> Copyright 2001-2003, IAIK, Graz University of Technology, Inffeldgasse 16a, 8010 Graz, Austria. All Rights Reserved.
+          </font>
+          <font size="-1">version ${version}</font>
+        ]]>
+      </bottom>
+      <sourcepath>
+        <pathelement location="${src}"/>      
+        <pathelement location="${javadoc-src}"/>      
+      </sourcepath>
+      <packageset dir="${src}"/>
+      <classpath> 
+        <pathelement location="${wrapper}"/>
+        <pathelement location="${lib}/iaik_cms.jar"/>
+        <pathelement location="${lib}/iaik_jce_full.jar"/>
+      </classpath>
+    </javadoc>
+  </target>
+
+<!-- compiling all classes and pack it into jars -->
+  <target name="jar" depends="init,compile" description="Builds the project jar file.">
+    <mkdir dir="${classes}"/>
+    <jar jarfile="${jar}" basedir="${classes}"> 
+      <!-- include all resources, but exclude temporary files of version control (*.scc) -->
+      <fileset dir="resources">
+        <exclude name="**/*.scc"/>
+      </fileset>
+    </jar>
+  </target>
+
+<!-- build all -->
+  <target name="all" depends="init,compile,javadoc,jar" description="Builds all."/>
+  
+</project>
+

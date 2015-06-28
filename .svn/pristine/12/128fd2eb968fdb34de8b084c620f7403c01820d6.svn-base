@@ -1,0 +1,8 @@
+Extension-List: pkcs11wrapper
+pkcs11wrapper-Extension-Name: iaik.pkcs.pkcs11.wrapper
+pkcs11wrapper-Specification-Vendor: IAIK
+pkcs11wrapper-Specification-Version: 1.2.17
+pkcs11wrapper-Implementation-Vendor-Id: iaik
+pkcs11wrapper-Implementation-Vendor: IAIK
+pkcs11wrapper-Implementation-Version: 1.2.17
+pkcs11wrapper-Implementation-URL: file:///temp/$(os-name)$/PKCS11WrapperWin32Installer.jar
